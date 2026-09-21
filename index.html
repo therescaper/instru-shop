@@ -7,9 +7,10 @@
   <meta name="description" content="Instru Shop, la boutique d’InstructeurMc sur Peurle SMP. Articles et échanges entre joueurs Minecraft.">
   <title>Instru Shop — Peurle SMP</title>
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" type="image/png">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./images.js" defer></script><script src="./catalogue.js" defer></script>
-  <script src="./app.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=2">
+  <script src="./images.js" defer></script><script src="./catalogue.js?v=2" defer></script>
+  <script src="./pricing.js?v=2" defer></script>
+  <script src="./app.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalogue">Aller au catalogue</a>
@@ -44,6 +45,7 @@
     <section class="order-panel" id="order-panel" hidden aria-labelledby="order-title">
       <div><p class="eyebrow">TA SÉLECTION</p><h2 id="order-title">Préparer ma commande</h2></div>
       <p id="order-empty">Ajoute un article pour préparer ton message.</p>
+      <p class="order-help">Choisis ton paiement pour chaque article : fer, or ou diamants selon les tarifs proposés.</p>
       <ul id="order-items"></ul>
       <div class="order-total" id="order-total"></div>
       <button type="button" class="primary-button" id="copy-order" disabled>Copier ma commande</button>

@@ -4,17 +4,16 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex"><meta name="theme-color" content="#10241e">
   <title>Gérer les prix — Instru Shop</title>
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII="><link rel="stylesheet" href="./style.css">
-  <script src="./images.js" defer></script><script src="./catalogue.js" defer></script><script src="./gestion.js" defer></script>
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII="><link rel="stylesheet" href="./style.css?v=2">
+  <script src="./images.js" defer></script><script src="./catalogue.js?v=2" defer></script><script src="./gestion.js?v=2" defer></script>
 </head>
 <body>
   <header class="site-header"><a class="brand" href="./"><span class="brand-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" width="32" height="32" alt=""></span>Instru Shop</a><a href="./">Retour à la boutique</a></header>
   <main class="management">
     <p class="eyebrow">ESPACE VENDEUR · INSTRUCTEURMC</p>
     <h1>Les prix, c’est toi<br>qui les fixes<span>.</span></h1>
-    <p class="intro-copy">Renseigne tes tarifs et les quantités vendues. Un prix vide affiche « Prix sur demande ».</p>
+    <p class="intro-copy">Renseigne un prix pour chaque paiement accepté. Laisse le champ vide pour refuser cette monnaie. Si tous les prix sont vides, l’article affiche « Prix sur demande ».</p>
     <form id="prices-form">
-      <label class="currency-field">Monnaie du serveur<input id="currency" type="text" maxlength="40" placeholder="Ex. : diamants, émeraudes, $" autocomplete="off"></label>
       <div class="price-editor" id="price-editor"></div>
       <div class="publish-box">
         <h2>Mettre les nouveaux prix en ligne</h2>

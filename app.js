@@ -1,9 +1,8 @@
 'use strict';
 const shop = window.SHOP;
 const selection = new Map();
-const numbers = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 });
-const hasPrice = product => Number.isFinite(product.price) && product.price >= 0 && Boolean(shop.currency.trim());
-const money = value => `${numbers.format(value)} ${shop.currency}`;
+const payments = new Map();
+const pricing = window.Pricing;
 const byId = id => document.getElementById(id);
 const write = (id, text) => { byId(id).textContent = text; };
 document.title = `${shop.name} — Boutique Minecraft`;
@@ -37,7 +36,8 @@ for (const product of shop.products) {
   const content = element('div', 'product-content');
   content.append(element('p', 'category', product.category), element('h3', '', product.name), element('p', 'product-description', product.description));
   const cost = element('div', 'product-cost');
-  cost.append(element('strong', '', hasPrice(product) ? money(product.price) : 'Prix sur demande'), element('span', '', `/ ${product.unit}`));
+  const options = pricing.options(product);
+  cost.append(element('strong', '', options.length ? options.map(([currency, amount]) => pricing.format(currency, amount)).join(' ou ') : 'Prix sur demande'), element('span', '', `/ ${product.unit}`));
   content.append(cost);
   if (canOrder) {
     const button = element('button', 'add-button', 'Ajouter à ma commande');
@@ -45,6 +45,7 @@ for (const product of shop.products) {
     button.setAttribute('aria-label', `Ajouter ${product.name} à ma commande`);
     button.addEventListener('click', () => {
       selection.set(product.id, Math.min(64, (selection.get(product.id) || 0) + 1));
+      if (!payments.has(product.id) && options.length) payments.set(product.id, options[0][0]);
       updateOrder();
       write('copy-status', `${product.name} ajouté.`);
     });
@@ -55,22 +56,39 @@ for (const product of shop.products) {
 }
 if (!shop.products.length) byId('products').append(element('p', '', 'Le catalogue arrive bientôt.'));
 function selected() { return shop.products.filter(p => selection.has(p.id)); }
-function totalText() {
-  if (selected().some(p => !hasPrice(p))) return 'Prix à confirmer sur Discord';
-  return `Total : ${money(selected().reduce((sum, p) => sum + p.price * selection.get(p.id), 0))}`;
-}
+function totalText() { return pricing.total(shop.products, selection, payments); }
 function updateOrder() {
   byId('order-items').replaceChildren();
   byId('order-fallback').hidden = true;
   for (const product of selected()) {
     const row = element('li', 'order-row');
-    row.append(element('span', '', `${selection.get(product.id)} × ${product.name} (${product.unit})`));
+    const summary = element('div', 'order-summary');
+    summary.append(element('span', '', `${selection.get(product.id)} × ${product.name} (${product.unit})`));
+    if (product.details) summary.append(element('small', '', product.details));
+    const options = pricing.options(product);
+    if (options.length > 1) {
+      const label = element('label', 'payment-choice', 'Paiement pour cet article');
+      const select = element('select');
+      select.setAttribute('aria-label', `Paiement pour ${product.name}`);
+      for (const [currency] of options) {
+        const option = element('option', '', pricing.quote(product, selection.get(product.id), currency));
+        option.value = currency; select.append(option);
+      }
+      select.value = payments.get(product.id);
+      select.addEventListener('change', () => {
+        payments.set(product.id, select.value);
+        write('order-total', totalText()); write('copy-status', '');
+        byId('order-fallback').hidden = true;
+      });
+      label.append(select); summary.append(label);
+    } else summary.append(element('small', '', pricing.quote(product, selection.get(product.id), payments.get(product.id))));
+    row.append(summary);
     const remove = element('button', 'remove-button', 'Retirer');
     remove.type = 'button';
     remove.setAttribute('aria-label', `Retirer un lot de ${product.name}`);
     remove.addEventListener('click', () => {
       const amount = selection.get(product.id) - 1;
-      if (amount) selection.set(product.id, amount); else selection.delete(product.id);
+      if (amount) selection.set(product.id, amount); else { selection.delete(product.id); payments.delete(product.id); }
       write('copy-status', ''); updateOrder();
     });
     row.append(remove); byId('order-items').append(row);
@@ -82,7 +100,7 @@ function updateOrder() {
 }
 byId('copy-order').addEventListener('click', async () => {
   if (!selection.size) return;
-  const message = `Bonjour ! Je voudrais commander chez ${shop.name} sur ${shop.server} : ${selected().map(p => `${selection.get(p.id)} × ${p.name} (${p.unit})`).join(', ')}. ${totalText()}. Quand peut-on se retrouver en jeu ?`;
+  const message = `Bonjour ! Je voudrais commander chez ${shop.name} sur ${shop.server} : ${selected().map(p => `${selection.get(p.id)} × ${p.name}${p.details ? ' [' + p.details + ']' : ''} (${p.unit}) — ${pricing.quote(p, selection.get(p.id), payments.get(p.id))}`).join(' ; ')}. ${totalText()}. Quand peut-on se retrouver en jeu ?`;
   try {
     await navigator.clipboard.writeText(message);
     write('copy-status', 'Message copié ! Il te reste à l’envoyer au vendeur.');

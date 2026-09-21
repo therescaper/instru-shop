@@ -1,0 +1,30 @@
+'use strict';
+window.Pricing = {
+  options(product) {
+    return Object.entries(product.prices || {}).filter(([, amount]) => Number.isFinite(amount) && amount >= 0);
+  },
+  format(currency, amount) {
+    const n = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(amount);
+    if (currency === 'diamants') return `${n} diamant${amount === 1 ? '' : 's'}`;
+    if (currency === 'fer' || currency === 'or') return `${n} lingot${amount === 1 ? '' : 's'} ${currency === 'or' ? 'd’or' : 'de fer'}`;
+    return `${n} ${currency}`;
+  },
+  quote(product, count, currency) {
+    const option = this.options(product).find(([key]) => key === currency);
+    return option ? this.format(currency, option[1] * count) : 'prix sur demande';
+  },
+  total(products, selection, payments) {
+    const totals = new Map();
+    let unknown = false;
+    for (const product of products) {
+      const quantity = selection.get(product.id);
+      if (!quantity) continue;
+      const currency = payments.get(product.id);
+      const option = this.options(product).find(([key]) => key === currency);
+      if (!option) { unknown = true; continue; }
+      totals.set(currency, (totals.get(currency) || 0) + option[1] * quantity);
+    }
+    const sum = [...totals].map(([currency, amount]) => this.format(currency, amount)).join(' + ');
+    return sum ? `Total : ${sum}${unknown ? ' + articles au prix à confirmer' : ''}` : 'Prix à confirmer sur Discord';
+  }
+};
