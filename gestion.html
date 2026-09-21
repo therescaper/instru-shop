@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex"><meta name="theme-color" content="#10241e">
+  <title>Gérer les prix — Instru Shop</title>
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII="><link rel="stylesheet" href="./style.css">
+  <script src="./images.js" defer></script><script src="./catalogue.js" defer></script><script src="./gestion.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./"><span class="brand-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" width="32" height="32" alt=""></span>Instru Shop</a><a href="./">Retour à la boutique</a></header>
+  <main class="management">
+    <p class="eyebrow">ESPACE VENDEUR · INSTRUCTEURMC</p>
+    <h1>Les prix, c’est toi<br>qui les fixes<span>.</span></h1>
+    <p class="intro-copy">Renseigne tes tarifs et les quantités vendues. Un prix vide affiche « Prix sur demande ».</p>
+    <form id="prices-form">
+      <label class="currency-field">Monnaie du serveur<input id="currency" type="text" maxlength="40" placeholder="Ex. : diamants, émeraudes, $" autocomplete="off"></label>
+      <div class="price-editor" id="price-editor"></div>
+      <div class="publish-box">
+        <h2>Mettre les nouveaux prix en ligne</h2>
+        <p>Cette page prépare tes modifications. Elles seront visibles par tous après leur enregistrement sur GitHub, avec ton compte <strong>therescaper</strong>.</p>
+        <ol>
+          <li>Remplis les prix, puis clique sur <strong>Copier mes modifications</strong>.</li>
+          <li>Ouvre l’éditeur GitHub et remplace tout le contenu du fichier par le texte copié.</li>
+          <li>Clique sur <strong>Commit changes</strong>, puis confirme. GitHub actualisera la boutique après quelques instants.</li>
+        </ol>
+        <div class="publish-actions"><button class="primary-button" type="submit">1. Copier mes modifications</button><a class="secondary-button" href="https://github.com/therescaper/instru-shop/edit/main/catalogue.js" target="_blank" rel="noopener noreferrer">2. Ouvrir l’éditeur GitHub</a></div>
+        <p id="editor-status" role="status" aria-live="polite"></p>
+        <label id="export-label" hidden>Contenu à copier dans le fichier catalogue.js<textarea id="export-content" readonly spellcheck="false"></textarea></label>
+      </div>
+    </form>
+  </main>
+  <footer><span>Instru Shop · Peurle SMP</span><span>Seul un compte autorisé sur le dépôt GitHub peut publier des changements.</span></footer>
+</body>
+</html>

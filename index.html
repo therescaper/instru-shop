@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10241e">
+  <meta name="description" content="Instru Shop, la boutique d’InstructeurMc sur Peurle SMP. Articles et échanges entre joueurs Minecraft.">
+  <title>Instru Shop — Peurle SMP</title>
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./images.js" defer></script><script src="./catalogue.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalogue">Aller au catalogue</a>
+  <div class="draft-note" id="draft-note">APERÇU · Produits d’exemple et tarifs à personnaliser</div>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Accueil de la boutique">
+      <span class="brand-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" alt="" width="32" height="32"></span>
+      <span id="shop-name">Instru Shop</span>
+    </a>
+    <span class="edition">MINECRAFT JAVA <span>26.3</span></span>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow" id="server-name">Peurle SMP</p>
+        <h1 id="page-title">De quoi préparer<br>ta prochaine aventure<span>.</span></h1>
+        <p class="intro-copy" id="shop-description">Des outils, de l’équipement et des ressources à échanger entre joueurs.</p>
+      </div>
+      <aside class="trade-note">
+        <span class="trade-label">INSTRUCTEURMC</span>
+        <p>Tu choisis.<br> On se retrouve en jeu.</p>
+        <span id="contact-summary">Discord : therescaper</span>
+        <button type="button" class="contact-button" id="copy-discord">Copier le pseudo Discord</button>
+        <span id="discord-status" role="status" aria-live="polite"></span>
+      </aside>
+    </section>
+    <section id="catalogue" aria-labelledby="catalogue-title">
+      <div class="section-heading"><h2 id="catalogue-title">Les articles</h2><span id="article-count"></span></div>
+      <div class="product-grid" id="products"></div>
+      <noscript><p>Active JavaScript pour afficher les articles de la boutique.</p></noscript>
+    </section>
+    <section class="order-panel" id="order-panel" hidden aria-labelledby="order-title">
+      <div><p class="eyebrow">TA SÉLECTION</p><h2 id="order-title">Préparer ma commande</h2></div>
+      <p id="order-empty">Ajoute un article pour préparer ton message.</p>
+      <ul id="order-items"></ul>
+      <div class="order-total" id="order-total"></div>
+      <button type="button" class="primary-button" id="copy-order" disabled>Copier ma commande</button>
+      <p class="order-help" id="order-help"></p>
+      <p role="status" aria-live="polite" id="copy-status"></p>
+      <textarea id="order-fallback" aria-label="Message de commande à copier manuellement" readonly hidden></textarea>
+    </section>
+  </main>
+  <footer><span id="footer-brand">Instru Shop · Commerce entre joueurs</span><a href="./gestion.html">Gérer les prix</a><span>Site de joueur indépendant, non affilié à Mojang ou Microsoft.</span></footer>
+</body>
+</html>
