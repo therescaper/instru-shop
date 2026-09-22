@@ -22,6 +22,8 @@ window.SHOP = {
     { id: 'glowstone', name: 'Glowstone', category: 'Construction', image: 'glowstone', description: 'Des blocs de pierre lumineuse pour tes builds.', unit: 'lot de 32 blocs', prices: { fer: 8, or: 8 } },
     { id: 'verre', name: 'Verre', category: 'Construction', image: 'glass', description: 'Des blocs de verre pour tes constructions.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
     { id: 'potions', name: 'Potions au choix', category: 'Potions', image: 'potion', description: 'Choisis tes 3 potions et précise ton choix sur Discord.', unit: 'lot de 3', details: 'Potions à préciser sur Discord', prices: { diamants: 2 } },
-    { id: 'miel', name: 'Rayons de miel', category: 'Ressources', image: 'honeycomb', description: 'Pour tes bougies et tes constructions en cuivre ciré.', unit: 'lot de 32', prices: { fer: 12, or: 12, diamants: 4 } }
+    { id: 'miel', name: 'Rayons de miel', category: 'Ressources', image: 'honeycomb', description: 'Pour tes bougies et tes constructions en cuivre ciré.', unit: 'lot de 32', prices: { fer: 12, or: 12, diamants: 4 } },
+    { id: 'livres', name: 'Livres', category: 'Enchantement', image: 'book', description: 'Pour tes enchantements et tes bibliothèques.', unit: 'lot de 32', prices: { fer: 12, or: 12 } },
+    { id: 'bibliotheques', name: 'Bibliothèques', category: 'Enchantement', image: 'bookshelf', description: 'Pour aménager ton espace d’enchantement.', unit: 'lot de 16', prices: { fer: 20, or: 20 } }
   ]
 };
