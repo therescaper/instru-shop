@@ -7,10 +7,10 @@
   <meta name="description" content="Instru Shop, la boutique d’InstructeurMc sur Peurle SMP. Articles et échanges entre joueurs Minecraft.">
   <title>Instru Shop — Peurle SMP</title>
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" type="image/png">
-  <link rel="stylesheet" href="./style.css?v=6">
+  <link rel="stylesheet" href="./style.css?v=11">
   <script src="./images.js?v=10" defer></script><script src="./catalogue.js?v=10" defer></script>
   <script src="./pricing.js?v=2" defer></script>
-  <script src="./app.js?v=2" defer></script>
+  <script src="./app.js?v=11" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalogue">Aller au catalogue</a>
@@ -39,6 +39,12 @@
     </section>
     <section id="catalogue" aria-labelledby="catalogue-title">
       <div class="section-heading"><h2 id="catalogue-title">Les articles</h2><span id="article-count"></span></div>
+      <nav class="shelf-carousel" aria-label="Rayons de la boutique">
+        <button class="shelf-arrow" id="shelf-prev" type="button" aria-label="Faire défiler les rayons vers la gauche">‹</button>
+        <div class="shelf-track" id="shelf-track"></div>
+        <button class="shelf-arrow" id="shelf-next" type="button" aria-label="Faire défiler les rayons vers la droite">›</button>
+      </nav>
+      <p class="shelf-status" id="shelf-status" role="status" aria-live="polite"></p>
       <div class="product-grid" id="products"></div>
       <noscript><p>Active JavaScript pour afficher les articles de la boutique.</p></noscript>
     </section>

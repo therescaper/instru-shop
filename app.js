@@ -23,8 +23,36 @@ function element(tag, className, content) {
   if (content !== undefined) el.textContent = content;
   return el;
 }
+const shelves = [
+  {name:'Tout', icon:'emerald'},
+  {name:'Blocs', icon:'bookshelf'},
+  {name:'Consommables', icon:'golden_carrot'},
+  {name:'Équipement', icon:'diamond_pickaxe'},
+  {name:'Ressources', icon:'lapis_lazuli'}
+];
+function shelfFor(product) {
+  if (product.shelf && shelves.some(s => s.name === product.shelf && s.name !== 'Tout')) return product.shelf;
+  if (product.id === 'bibliotheques' || ['Construction','Blocs'].includes(product.category)) return 'Blocs';
+  if (['xp','perle'].includes(product.id) || ['Nourriture','Potions','Consommables'].includes(product.category)) return 'Consommables';
+  if (['Outils','Armes','Armures','Équipement'].includes(product.category)) return 'Équipement';
+  return 'Ressources';
+}
+const productCards = [];
+const shelfButtons = [];
+function selectShelf(name) {
+  let count = 0;
+  for (const {card, shelf} of productCards) {
+    card.hidden = name !== 'Tout' && shelf !== name;
+    if (!card.hidden) count++;
+  }
+  for (const button of shelfButtons) button.setAttribute('aria-pressed', String(button.dataset.shelf === name));
+  write('article-count', `${count} article${count > 1 ? 's' : ''}`);
+  write('shelf-status', `${name === 'Tout' ? 'Tous les rayons' : name} · ${count} article${count > 1 ? 's' : ''}`);
+}
 for (const product of shop.products) {
   const card = element('article', 'product-card');
+  const shelf = shelfFor(product);
+  productCards.push({card, shelf});
   const display = element('div', 'product-image');
   if (product.images) display.classList.add('armor-images');
   for (const asset of product.images || [product.image]) {
@@ -34,7 +62,7 @@ for (const product of shop.products) {
     display.append(image);
   }
   const content = element('div', 'product-content');
-  content.append(element('p', 'category', product.category), element('h3', '', product.name), element('p', 'product-description', product.description));
+  content.append(element('p', 'category', shelf), element('h3', '', product.name), element('p', 'product-description', product.description));
   const cost = element('div', 'product-cost');
   const options = pricing.options(product);
   cost.append(element('strong', '', options.length ? options.map(([currency, amount]) => pricing.format(currency, amount)).join(' ou ') : 'Prix sur demande'), element('span', '', `/ ${product.unit}`));
@@ -54,6 +82,27 @@ for (const product of shop.products) {
   card.append(display, content);
   byId('products').append(card);
 }
+for (const shelf of shelves) {
+  const button = element('button', 'shelf-button');
+  button.type = 'button'; button.dataset.shelf = shelf.name;
+  button.setAttribute('aria-controls', 'products');
+  const icon = new Image(24,24); icon.src = window.ITEM_ICONS[shelf.icon]; icon.alt = '';
+  const count = shelf.name === 'Tout' ? shop.products.length : productCards.filter(p => p.shelf === shelf.name).length;
+  button.append(icon, element('span','',shelf.name),element('span','shelf-count',count));
+  button.addEventListener('click', () => selectShelf(shelf.name));
+  shelfButtons.push(button); byId('shelf-track').append(button);
+}
+const shelfTrack = byId('shelf-track');
+function updateShelfArrows() {
+  byId('shelf-prev').disabled = shelfTrack.scrollLeft <= 1;
+  byId('shelf-next').disabled = shelfTrack.scrollLeft + shelfTrack.clientWidth >= shelfTrack.scrollWidth - 1;
+}
+for (const [id,direction] of [['shelf-prev',-1],['shelf-next',1]]) {
+  byId(id).addEventListener('click', () => shelfTrack.scrollBy({left:direction * 220,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}));
+}
+shelfTrack.addEventListener('scroll',updateShelfArrows,{passive:true});
+new ResizeObserver(updateShelfArrows).observe(shelfTrack);
+selectShelf('Tout'); updateShelfArrows();
 if (!shop.products.length) byId('products').append(element('p', '', 'Le catalogue arrive bientôt.'));
 function selected() { return shop.products.filter(p => selection.has(p.id)); }
 function totalText() { return pricing.total(shop.products, selection, payments); }
