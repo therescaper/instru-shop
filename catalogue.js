@@ -1,4 +1,4 @@
-// Tarifs à renseigner depuis gestion.html, puis à publier sur GitHub.
+// Catalogue Instru Shop.
 window.SHOP = {
   name: 'Instru Shop',
   server: 'Peurle SMP',
