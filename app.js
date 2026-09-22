@@ -28,6 +28,7 @@ const shelves = [
   {name:'Blocs', icon:'bookshelf'},
   {name:'Consommables', icon:'golden_carrot'},
   {name:'Équipement', icon:'diamond_pickaxe'},
+  {name:'Enchantements', icon:'book'},
   {name:'Ressources', icon:'lapis_lazuli'}
 ];
 function shelfFor(product) {
@@ -65,7 +66,7 @@ for (const product of shop.products) {
   content.append(element('p', 'category', shelf), element('h3', '', product.name), element('p', 'product-description', product.description));
   const cost = element('div', 'product-cost');
   const options = pricing.options(product);
-  cost.append(element('strong', '', options.length ? options.map(([currency, amount]) => pricing.format(currency, amount)).join(' ou ') : 'Prix sur demande'), element('span', '', `/ ${product.unit}`));
+  cost.append(element('strong', '', pricing.display(product)), element('span', '', `/ ${product.unit}`));
   content.append(cost);
   if (canOrder) {
     const button = element('button', 'add-button', 'Ajouter à ma commande');
