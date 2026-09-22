@@ -18,6 +18,8 @@ window.SHOP = {
     { id: 'perle', name: 'Perles de l’Ender', category: 'Ressources', image: 'ender_pearl', description: 'Pour te téléporter ou préparer tes crafts.', unit: 'lot de 16', prices: { fer: 64, or: 64, diamants: 8 } },
     { id: 'xp', name: 'Fioles d’expérience', category: 'Enchantement', image: 'experience_bottle', description: 'Quelques points d’expérience à portée de main.', unit: 'lot de 32', prices: { fer: 40, or: 40 } },
     { id: 'lapis', name: 'Lapis-lazuli', category: 'Enchantement', image: 'lapis_lazuli', description: 'Pour ta table d’enchantement et tes teintures.', unit: 'lot de 32', prices: { fer: 32, or: 32, diamants: 8 } },
-    { id: 'glowstone', name: 'Glowstone', category: 'Construction', image: 'glowstone', description: 'Des blocs de pierre lumineuse pour tes builds.', unit: 'lot de 32 blocs', prices: { fer: 32, or: 32 } }
+    { id: 'glowstone', name: 'Glowstone', category: 'Construction', image: 'glowstone', description: 'Des blocs de pierre lumineuse pour tes builds.', unit: 'lot de 32 blocs', prices: { fer: 32, or: 32 } },
+    { id: 'verre', name: 'Verre', category: 'Construction', image: 'glass', description: 'Des blocs de verre pour tes constructions.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
+    { id: 'potions', name: 'Potions au choix', category: 'Potions', image: 'potion', description: 'Choisis tes 3 potions et précise ton choix sur Discord.', unit: 'lot de 3', details: 'Potions à préciser sur Discord', prices: { diamants: 2 } }
   ]
 };
