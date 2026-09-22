@@ -37,7 +37,7 @@ window.SHOP = {
     { id: 'ench-protection-4', name: 'Protection 4', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour armure.', unit: 'livre', prices: { fer: 64, or: 64, diamants: 12 } },
     { id: 'ench-smite-5', name: 'Châtiment 5 (Smite 5)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour épée ou hache.', unit: 'livre', prices: { fer: 64, or: 64, diamants: 12 } },
     { id: 'ench-channeling', name: 'Canalisation (Channeling)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour trident.', unit: 'livre', prices: { fer: 32, or: 32, diamants: 6 } },
-    { id: 'ench-mending', name: 'Raccommodage (Mending)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour réparer avec l’expérience.', unit: 'livre', prices: { fer: 64, or: 64, diamants: 12 } },
+    { id: 'ench-mending', name: 'Raccommodage (Mending)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour réparer avec l’expérience.', unit: 'livre', prices: { fer: 32, or: 32, diamants: 6 } },
     { id: 'ench-sharpness-5', name: 'Tranchant 5 (Sharpness 5)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour épée ou hache.', unit: 'livre', prices: { fer: 64, or: 64, diamants: 12 } },
     { id: 'ench-loyalty-3', name: 'Loyauté 3 (Loyalty 3)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Livre enchanté pour trident.', unit: 'livre', prices: { fer: 48, or: 48, diamants: 8 } }
   ]
