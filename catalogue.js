@@ -23,7 +23,7 @@ window.SHOP = {
     { id: 'glowstone', name: 'Glowstone', category: 'Construction', image: 'glowstone', description: 'Des blocs de pierre lumineuse pour tes builds.', unit: 'lot de 32 blocs', prices: { fer: 8, or: 8 } },
     { id: 'verre', name: 'Verre', category: 'Construction', image: 'glass', description: 'Des blocs de verre pour tes constructions.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
     { id: 'chiseled-stone-bricks', name: 'Briques de pierre sculptées', category: 'Construction', image: 'chiseled_stone_bricks', description: 'Des blocs sculptés pour tes builds médiévaux.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
-    { id: 'briques', name: 'Briques', category: 'Construction', image: 'brick', description: 'Des briques simples pour tes crafts et builds.', unit: 'lot de 64', prices: { fer: 4, or: 4 } },
+    { id: 'briques', name: 'Briques', category: 'Construction', shelf: 'Ressources', image: 'brick', description: 'Des briques simples pour tes crafts et builds.', unit: 'lot de 64', prices: { fer: 4, or: 4 } },
     { id: 'polished-granite', name: 'Granite poli', category: 'Construction', image: 'polished_granite', description: 'Des blocs polis aux tons chauds.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
     { id: 'polished-andesite', name: 'Andésite polie', category: 'Construction', image: 'polished_andesite', description: 'Des blocs gris propres pour tes sols et murs.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
     { id: 'dripstone-block', name: 'Bloc de spéléothème', category: 'Construction', image: 'dripstone_block', description: 'Des blocs naturels pour grottes et décorations.', unit: 'lot de 64 blocs', prices: { fer: 8, or: 8 } },
