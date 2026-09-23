@@ -150,7 +150,19 @@ function updateOrder() {
 }
 byId('copy-order').addEventListener('click', async () => {
   if (!selection.size) return;
-  const message = `Bonjour ! Je voudrais commander chez ${shop.name} sur ${shop.server} : ${selected().map(p => `${selection.get(p.id)} × ${p.name}${p.details ? ' [' + p.details + ']' : ''} (${p.unit}) — ${pricing.quote(p, selection.get(p.id), payments.get(p.id))}`).join(' ; ')}. ${totalText()}. Quand peut-on se retrouver en jeu ?`;
+  const lines = selected().map(p => `- ${selection.get(p.id)} × ${p.name}${p.details ? ' [' + p.details + ']' : ''} (${p.unit}) — ${pricing.quote(p, selection.get(p.id), payments.get(p.id))}`);
+  const message = [
+    `Bonjour ! Je voudrais commander chez ${shop.name} sur ${shop.server} :`,
+    '',
+    ...lines,
+    '',
+    totalText(),
+    '',
+    'Coordonnées de livraison : X ___ / Y ___ / Z ___',
+    'Je laisserai le paiement dans un coffre à ces coordonnées.',
+    '',
+    'Merci !'
+  ].join('\n');
   try {
     await navigator.clipboard.writeText(message);
     write('copy-status', 'Message copié ! Il te reste à l’envoyer au vendeur.');
