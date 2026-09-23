@@ -11,7 +11,7 @@ window.SHOP = {
     { id: 'armure', name: 'Armure complète en diamant', category: 'Armures', image: 'diamond_chestplate', images: ['diamond_helmet','diamond_chestplate','diamond_leggings','diamond_boots'], description: 'Casque, plastron, jambières et bottes.', unit: 'ensemble de 4 pièces', prices: { diamants: 12 } },
     { id: 'pioche', name: 'Pioche en diamant', category: 'Outils', image: 'diamond_pickaxe', description: 'Efficacité 2 offerte pour tout achat de pioche.', unit: 'pièce', prices: { fer: 8, or: 8 } },
     { id: 'epee', name: 'Épée en diamant', category: 'Armes', image: 'diamond_sword', description: 'Tranchant 3, Solidité 3 et Recul 2 offerts pour tout achat.', unit: 'pièce', prices: { fer: 8, or: 8 } },
-    { id: 'pelle', name: 'Pelle en diamant', category: 'Outils', image: 'diamond_shovel', description: 'Pour préparer le terrain de tes projets.', unit: 'pièce', prices: { fer: 8, or: 8 } },
+    { id: 'pelle', name: 'Pelle en diamant', category: 'Outils', image: 'diamond_shovel', description: 'Toucher de soie (Silk Touch) offert pour tout achat.', unit: 'pièce', prices: { fer: 8, or: 8 } },
     { id: 'bouclier', name: 'Bouclier enchanté', category: 'Équipement', image: 'shield', description: 'Solidité III (Unbreaking III) + Raccommodage (Mending).', unit: 'pièce', details: 'Solidité III + Raccommodage', prices: { diamants: 5, fer: 32 } },
     { id: 'carotte', name: 'Carottes dorées', category: 'Nourriture', image: 'golden_carrot', description: 'De quoi garder tes réserves bien remplies.', unit: 'lot de 32', prices: { fer: 12, or: 12, diamants: 6 } },
     { id: 'pain', name: 'Pain', category: 'Nourriture', image: 'bread', description: 'Du ravitaillement pour tes expéditions.', unit: 'lot de 64', prices: { fer: 8, or: 8 } },
