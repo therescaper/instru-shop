@@ -3,7 +3,7 @@ window.SHOP = {
   name: 'Instru Shop',
   server: 'Peurle SMP',
   owner: 'InstructeurMc',
-  description: 'Des outils, de l’équipement et des ressources à échanger entre joueurs.',
+  description: 'Bienvenue à tous chez l’Instru Shop ! Le plus grand magasin de tout Peurle SMP.',
   draft: false,
   orderMode: 'discord', // catalogue, ingame ou discord
   discord: 'therescaper',
