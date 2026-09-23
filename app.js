@@ -158,7 +158,7 @@ byId('copy-order').addEventListener('click', async () => {
     '',
     totalText(),
     '',
-    'Coordonnées de livraison : X ___ / Y ___ / Z ___',
+    'Coordonnées de livraison : X ___ / Z ___',
     'Je laisserai le paiement dans un coffre à ces coordonnées.',
     '',
     'Merci !'
