@@ -42,7 +42,7 @@ window.SHOP = {
     { id: 'lanternes', name: 'Lanternes', category: 'Construction', image: 'lantern', description: 'Pour éclairer tes bases avec style.', unit: 'lot de 24', prices: { fer: 8, or: 8 } },
     { id: 'cloches', name: 'Cloches', category: 'Construction', image: 'bell', description: 'Pour décorer tes villages et tes shops.', unit: 'lot de 8', prices: { fer: 2, or: 2 } },
     { id: 'potions', name: 'Potions au choix', category: 'Potions', image: 'potion', description: 'Choisis tes 3 potions et précise ton choix sur Discord.', unit: 'lot de 3', details: 'Potions à préciser sur Discord', prices: { diamants: 2 } },
-    { id: 'miel', name: 'Rayons de miel', category: 'Ressources', image: 'honeycomb', description: 'Pour tes bougies et tes constructions en cuivre ciré.', unit: 'lot de 32', prices: { fer: 12, or: 12, diamants: 2 } },
+    { id: 'miel', name: 'Rayons de miel', category: 'Ressources', image: 'honeycomb', description: 'Pour tes bougies et tes constructions en cuivre ciré.', unit: 'lot de 64', prices: { fer: 8, or: 8, diamants: 2 } },
     { id: 'livres', name: 'Livres', category: 'Enchantement', image: 'book', description: 'Pour tes enchantements et tes bibliothèques.', unit: 'lot de 32', prices: { fer: 12, or: 12 } },
     { id: 'bibliotheques', name: 'Bibliothèques', category: 'Enchantement', image: 'bookshelf', description: 'Pour aménager ton espace d’enchantement.', unit: 'lot de 16', prices: { fer: 20, or: 20 } },
     { id: 'ench-unbreaking-3', name: 'Solidité 3 (Unbreaking 3)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Ralentit l’usure de ton équipement pendant l’utilisation.', unit: 'livre', prices: { fer: 20, or: 20, diamants: 2 } },
