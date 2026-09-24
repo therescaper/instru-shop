@@ -41,6 +41,8 @@ window.SHOP = {
     { id: 'yellow-terracotta', name: 'Terre cuite jaune', category: 'Construction', image: 'yellow_terracotta', description: 'De la terre cuite jaune pour builds lumineux.', unit: 'lot de 32 blocs', prices: { fer: 8, or: 8 } },
     { id: 'bougies-rouges', name: 'Bougies rouges', category: 'Construction', image: 'red_candle', description: 'Des bougies rouges pour éclairage et décoration.', unit: 'lot de 32', prices: { fer: 6, or: 6 } },
     { id: 'bougies-jaunes', name: 'Bougies jaunes', category: 'Construction', image: 'yellow_candle', description: 'Des bougies jaunes pour éclairage et décoration.', unit: 'lot de 32', prices: { fer: 6, or: 6 } },
+    { id: 'bannieres-blanches', name: 'Bannières blanches', category: 'Construction', image: 'white_banner', description: 'Des bannières blanches pour décorations et marqueurs.', unit: 'lot de 10', prices: { fer: 2, or: 2 } },
+    { id: 'bannieres-rouges', name: 'Bannières rouges', category: 'Construction', image: 'red_banner', description: 'Des bannières rouges pour décorations et marqueurs.', unit: 'lot de 10', prices: { fer: 2, or: 2 } },
     { id: 'lanternes', name: 'Lanternes', category: 'Construction', image: 'lantern', description: 'Pour éclairer tes bases avec style.', unit: 'lot de 24', prices: { fer: 8, or: 8 } },
     { id: 'cloches', name: 'Cloches', category: 'Construction', image: 'bell', description: 'Pour décorer tes villages et tes shops.', unit: 'lot de 8', prices: { fer: 2, or: 2 } },
     { id: 'potions', name: 'Potions au choix', category: 'Potions', image: 'potion', description: 'Choisis tes 3 potions et précise ton choix sur Discord.', unit: 'lot de 3', details: 'Potions à préciser sur Discord', prices: { diamants: 2 } },
