@@ -17,7 +17,7 @@ window.SHOP = {
     { id: 'bouclier', name: 'Bouclier enchanté', category: 'Équipement', image: 'shield', description: 'Solidité III (Unbreaking III) + Raccommodage (Mending).', unit: 'pièce', details: 'Solidité III + Raccommodage', prices: { diamants: 5, fer: 32, or: 32 } },
     { id: 'arc-power-2', name: 'Arc Puissance 2', category: 'Armes', image: 'bow', description: 'Arc enchanté Puissance 2 pour mieux défendre ta base.', unit: 'pièce', details: 'Puissance 2', prices: { fer: 4, or: 4 } },
     { id: 'fleches', name: 'Flèches', category: 'Armes', image: 'arrow', description: 'De quoi remplir ton carquois avant une expédition.', unit: 'lot de 64', prices: { fer: 1, or: 1 } },
-    { id: 'arbalete-multishot', name: 'Arbalète Multitir', category: 'Armes', image: 'crossbow', description: 'Arbalète enchantée Multitir pour tirer plusieurs projectiles.', unit: 'pièce', details: 'Multitir', prices: { fer: 4, or: 4 } },
+    { id: 'arbalete-multishot', name: 'Arbalète Multishot', category: 'Armes', image: 'crossbow', description: 'Arbalète enchantée Multishot pour tirer plusieurs projectiles.', unit: 'pièce', details: 'Multishot', prices: { fer: 4, or: 4 } },
     { id: 'carotte', name: 'Carottes dorées', category: 'Nourriture', image: 'golden_carrot', description: 'De quoi garder tes réserves bien remplies.', unit: 'lot de 32', prices: { fer: 12, or: 12, diamants: 6 } },
     { id: 'pommes', name: 'Pommes', category: 'Nourriture', image: 'apple', description: 'Des pommes simples pour compléter tes réserves.', unit: 'lot de 64', prices: { fer: 8, or: 8 } },
     { id: 'pain', name: 'Pain', category: 'Nourriture', image: 'bread', description: 'Du ravitaillement pour tes expéditions.', unit: 'lot de 64', prices: { fer: 8, or: 8 } },
