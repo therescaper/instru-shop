@@ -18,7 +18,7 @@ window.SHOP = {
     { id: 'arc-power-2', name: 'Arc Puissance 2', category: 'Armes', image: 'bow', description: 'Arc enchanté Puissance 2 pour mieux défendre ta base.', unit: 'pièce', details: 'Puissance 2', prices: { fer: 4, or: 4 } },
     { id: 'fleches', name: 'Flèches', category: 'Armes', image: 'arrow', description: 'De quoi remplir ton carquois avant une expédition.', unit: 'lot de 64', prices: { fer: 1, or: 1 } },
     { id: 'arbalete-multishot', name: 'Arbalète Multishot', category: 'Armes', image: 'crossbow', description: 'Arbalète enchantée Multishot pour tirer plusieurs projectiles.', unit: 'pièce', details: 'Multishot', prices: { fer: 4, or: 4 } },
-    { id: 'carotte', name: 'Carottes dorées', category: 'Nourriture', image: 'golden_carrot', description: 'De quoi garder tes réserves bien remplies.', unit: 'lot de 32', prices: { fer: 12, or: 12, diamants: 6 } },
+    { id: 'carotte', name: 'Carottes dorées', category: 'Nourriture', image: 'golden_carrot', description: 'De quoi garder tes réserves bien remplies.', unit: 'lot de 32', prices: { fer: 8, or: 8, diamants: 4 } },
     { id: 'pommes', name: 'Pommes', category: 'Nourriture', image: 'apple', description: 'Des pommes simples pour compléter tes réserves.', unit: 'lot de 64', prices: { fer: 8, or: 8 } },
     { id: 'pain', name: 'Pain', category: 'Nourriture', image: 'bread', description: 'Du ravitaillement pour tes expéditions.', unit: 'lot de 64', prices: { fer: 8, or: 8 } },
     { id: 'perle', name: 'Perles de l’Ender', category: 'Ressources', image: 'ender_pearl', description: 'Pour te téléporter ou préparer tes crafts.', unit: 'lot de 16', prices: { fer: 32, or: 32, diamants: 8 } },
@@ -67,3 +67,4 @@ window.SHOP = {
     { id: 'ench-loyalty-3', name: 'Loyauté 3 (Loyalty 3)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Ramène ton trident vers toi après le lancer.', unit: 'livre', prices: { fer: 20, or: 20, diamants: 2 } }
   ]
 };
+
