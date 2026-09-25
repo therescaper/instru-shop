@@ -69,16 +69,28 @@ for (const product of shop.products) {
   cost.append(element('strong', '', pricing.display(product)), element('span', '', `/ ${product.unit}`));
   content.append(cost);
   if (canOrder) {
+    const quantityLabel = element('label', 'quantity-control', 'Quantité');
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.min = '1';
+    quantityInput.max = '64';
+    quantityInput.step = '1';
+    quantityInput.value = '1';
+    quantityInput.inputMode = 'numeric';
+    quantityInput.setAttribute('aria-label', `Quantité de ${product.name} à ajouter`);
+    quantityLabel.append(quantityInput);
     const button = element('button', 'add-button', 'Ajouter à ma commande');
     button.type = 'button';
     button.setAttribute('aria-label', `Ajouter ${product.name} à ma commande`);
     button.addEventListener('click', () => {
-      selection.set(product.id, Math.min(64, (selection.get(product.id) || 0) + 1));
+      const quantity = Math.max(1, Math.min(64, Math.floor(Number(quantityInput.value) || 1)));
+      quantityInput.value = String(quantity);
+      selection.set(product.id, Math.min(64, (selection.get(product.id) || 0) + quantity));
       if (!payments.has(product.id) && options.length) payments.set(product.id, options[0][0]);
       updateOrder();
-      write('copy-status', `${product.name} ajouté.`);
+      write('copy-status', `${quantity} × ${product.name} ajouté${quantity > 1 ? 's' : ''}.`);
     });
-    content.append(button);
+    content.append(quantityLabel, button);
   }
   card.append(display, content);
   byId('products').append(card);
@@ -114,6 +126,23 @@ function updateOrder() {
     const row = element('li', 'order-row');
     const summary = element('div', 'order-summary');
     summary.append(element('span', '', `${selection.get(product.id)} × ${product.name} (${product.unit})`));
+    const quantityLabel = element('label', 'order-quantity', 'Quantité');
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.min = '1';
+    quantityInput.max = '64';
+    quantityInput.step = '1';
+    quantityInput.value = String(selection.get(product.id));
+    quantityInput.inputMode = 'numeric';
+    quantityInput.setAttribute('aria-label', `Modifier la quantité de ${product.name}`);
+    quantityInput.addEventListener('change', () => {
+      const quantity = Math.max(1, Math.min(64, Math.floor(Number(quantityInput.value) || 1)));
+      selection.set(product.id, quantity);
+      write('copy-status', '');
+      updateOrder();
+    });
+    quantityLabel.append(quantityInput);
+    summary.append(quantityLabel);
     if (product.details) summary.append(element('small', '', product.details));
     const options = pricing.options(product);
     if (options.length > 1) {
