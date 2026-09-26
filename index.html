@@ -8,10 +8,11 @@
   <title>Instru Shop — Peurle SMP</title>
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" type="image/png">
   <link rel="stylesheet" href="./style.css?v=14">
+  <script src="./config.js?v=1" defer></script>
   <script src="./images.js?v=20" defer></script><script src="./catalogue.js?v=39" defer></script>
   <script src="./pricing.js?v=3" defer></script>
-  <script src="./app.js?v=14" defer></script>
-  <!-- pages-refresh: 2026-09-26 09:19:32 -->
+  <script src="./app.js?v=15" defer></script>
+  <!-- pages-refresh: 2026-09-26 09:29:54 -->
 </head>
 <body>
   <a class="skip-link" href="#catalogue">Aller au catalogue</a>
@@ -66,7 +67,14 @@ Ici, vous découvrirez ce qu’est vraiment la variété.</p>
       <p class="order-help">Choisis ton paiement pour chaque article : fer, or ou diamants selon les tarifs proposés.</p>
       <ul id="order-items"></ul>
       <div class="order-total" id="order-total"></div>
-      <button type="button" class="primary-button" id="copy-order" disabled>Copier ma commande</button>
+      <div class="order-coordinates" aria-label="Coordonnées de commande">
+        <label>Livraison X<input id="delivery-x" inputmode="numeric" autocomplete="off"></label>
+        <label>Livraison Z<input id="delivery-z" inputmode="numeric" autocomplete="off"></label>
+        <label>Coffre paiement X<input id="payment-x" inputmode="numeric" autocomplete="off"></label>
+        <label>Coffre paiement Z<input id="payment-z" inputmode="numeric" autocomplete="off"></label>
+      </div>
+      <button type="button" class="primary-button" id="send-order" hidden disabled>Envoyer la commande sur Discord</button>
+      <button type="button" class="primary-button secondary-order-button" id="copy-order" disabled>Copier ma commande</button>
       <p class="order-help" id="order-help"></p>
       <p role="status" aria-live="polite" id="copy-status"></p>
       <textarea id="order-fallback" aria-label="Message de commande à copier manuellement" readonly hidden></textarea>

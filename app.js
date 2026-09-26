@@ -3,6 +3,7 @@ const shop = window.SHOP;
 const selection = new Map();
 const payments = new Map();
 const pricing = window.Pricing;
+const webhookEndpoint = window.ORDER_WEBHOOK_ENDPOINT || '';
 const byId = id => document.getElementById(id);
 const write = (id, text) => { byId(id).textContent = text; };
 document.title = `${shop.name} — Boutique Minecraft`;
@@ -174,24 +175,36 @@ function updateOrder() {
   }
   byId('order-empty').hidden = selection.size > 0;
   byId('copy-order').disabled = selection.size === 0;
+  if (byId('send-order')) byId('send-order').disabled = selection.size === 0;
   write('order-total', selection.size ? totalText() : '');
-  write('order-help', shop.orderMode === 'discord' ? `Envoie ensuite ce message à ${shop.discord} sur Discord pour convenir de l’échange.` : `Envoie ensuite ce message à ${shop.owner} en jeu pour convenir de l’échange.`);
+  write('order-help', webhookEndpoint ? 'Renseigne les coordonnées, puis envoie la commande sur Discord.' : (shop.orderMode === 'discord' ? `Envoie ensuite ce message à ${shop.discord} sur Discord pour convenir de l’échange.` : `Envoie ensuite ce message à ${shop.owner} en jeu pour convenir de l’échange.`));
 }
-byId('copy-order').addEventListener('click', async () => {
-  if (!selection.size) return;
-  const lines = selected().map(p => `- ${selection.get(p.id)} × ${p.name}${p.details ? ' [' + p.details + ']' : ''} (${p.unit}) — ${pricing.quote(p, selection.get(p.id), payments.get(p.id))}`);
-  const message = [
+function orderLines() {
+  return selected().map(p => `- ${selection.get(p.id)} × ${p.name}${p.details ? ' [' + p.details + ']' : ''} (${p.unit}) — ${pricing.quote(p, selection.get(p.id), payments.get(p.id))}`);
+}
+function coordText(prefix, xId, zId) {
+  const x = byId(xId)?.value.trim();
+  const z = byId(zId)?.value.trim();
+  return x || z ? `${prefix} : X ${x || '___'} / Z ${z || '___'}` : `${prefix} : X ___ / Z ___`;
+}
+function orderMessage() {
+  return [
     `Bonjour ! Je voudrais commander chez ${shop.name} sur ${shop.server} :`,
     '',
-    ...lines,
+    ...orderLines(),
     '',
     totalText(),
     '',
-    'Coordonnées de livraison : X ___ / Z ___',
-    'Je laisserai le paiement dans un coffre à ces coordonnées.',
+    coordText('Coordonnées de livraison', 'delivery-x', 'delivery-z'),
+    coordText('Coffre de paiement', 'payment-x', 'payment-z'),
     '',
     'Merci !'
-  ].join('\n');
+  ].join('
+');
+}
+byId('copy-order').addEventListener('click', async () => {
+  if (!selection.size) return;
+  const message = orderMessage();
   try {
     await navigator.clipboard.writeText(message);
     write('copy-status', 'Message copié ! Il te reste à l’envoyer au vendeur.');
@@ -202,6 +215,34 @@ byId('copy-order').addEventListener('click', async () => {
     write('copy-status', 'Copie le message ci-dessous, puis envoie-le au vendeur.');
   }
 });
+const sendOrderButton = byId('send-order');
+if (sendOrderButton) {
+  sendOrderButton.hidden = !webhookEndpoint;
+  sendOrderButton.addEventListener('click', async () => {
+    if (!selection.size || !webhookEndpoint) return;
+    sendOrderButton.disabled = true;
+    write('copy-status', 'Envoi de la commande sur Discord…');
+    try {
+      const response = await fetch(webhookEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: orderMessage(),
+          items: selected().map(p => ({ id: p.id, name: p.name, quantity: selection.get(p.id), unit: p.unit, payment: pricing.quote(p, selection.get(p.id), payments.get(p.id)) })),
+          total: totalText(),
+          delivery: coordText('Livraison', 'delivery-x', 'delivery-z'),
+          paymentChest: coordText('Coffre', 'payment-x', 'payment-z'),
+        }),
+      });
+      if (!response.ok) throw new Error('send failed');
+      write('copy-status', 'Commande envoyée sur Discord !');
+    } catch {
+      write('copy-status', 'Envoi impossible pour le moment. Utilise le bouton Copier ma commande.');
+    } finally {
+      sendOrderButton.disabled = false;
+    }
+  });
+}
 updateOrder();
 byId('copy-discord').addEventListener('click', async () => {
   try {
