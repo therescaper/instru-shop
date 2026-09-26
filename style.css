@@ -14,3 +14,5 @@
 
 .quantity-control{display:grid;grid-template-columns:auto 82px;align-items:center;gap:.75rem;margin-top:1rem;color:var(--muted);font-size:.875rem}.quantity-control input,.order-quantity input{width:82px;font:inherit;color:var(--text);background:#101f19;border:1px solid #537343;border-radius:5px;padding:.55rem .65rem}.order-quantity{display:flex;align-items:center;gap:.6rem;margin-top:.55rem;color:var(--muted);font-size:.875rem}.order-quantity input{width:72px;padding:.45rem .55rem}
 @media(max-width:520px){.quantity-control{grid-template-columns:1fr}.quantity-control input{width:100%}.order-quantity{align-items:flex-start;flex-direction:column;gap:.3rem}}
+
+.netherite-copy .netherite-note{margin:.55rem 0 0;color:#dec09c;font-size:.82rem;font-weight:600}
