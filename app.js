@@ -179,10 +179,9 @@ function updateOrder() {
 function orderLines() {
   return selected().map(p => `- ${selection.get(p.id)} × ${p.name}${p.details ? ' [' + p.details + ']' : ''} (${p.unit}) — ${pricing.quote(p, selection.get(p.id), payments.get(p.id))}`);
 }
-function coordText(prefix, xId, zId) {
-  const x = byId(xId)?.value.trim();
-  const z = byId(zId)?.value.trim();
-  return x || z ? `${prefix} : X ${x || '___'} / Z ${z || '___'}` : `${prefix} : X ___ / Z ___`;
+function fieldText(prefix, id, fallback) {
+  const value = byId(id)?.value.trim();
+  return `${prefix} : ${value || fallback}`;
 }
 function orderMessage() {
   return [
@@ -192,8 +191,9 @@ function orderMessage() {
     '',
     totalText(),
     '',
-    coordText('Coordonnées de livraison', 'delivery-x', 'delivery-z'),
-    coordText('Coffre de paiement', 'payment-x', 'payment-z'),
+    fieldText('Pseudo Minecraft', 'customer-name', 'à préciser'),
+    fieldText('Lieu de livraison', 'delivery-location', 'à préciser'),
+    fieldText('Coffre de paiement', 'payment-chest', 'à préciser'),
     '',
     'Merci !'
   ].join('\\n');
@@ -226,8 +226,9 @@ if (sendOrderButton) {
           message: orderMessage(),
           items: selected().map(p => ({ id: p.id, name: p.name, quantity: selection.get(p.id), unit: p.unit, payment: pricing.quote(p, selection.get(p.id), payments.get(p.id)) })),
           total: totalText(),
-          delivery: coordText('Livraison', 'delivery-x', 'delivery-z'),
-          paymentChest: coordText('Coffre', 'payment-x', 'payment-z'),
+          customer: fieldText('Pseudo', 'customer-name', 'à préciser'),
+          delivery: fieldText('Livraison', 'delivery-location', 'à préciser'),
+          paymentChest: fieldText('Coffre', 'payment-chest', 'à préciser'),
         }),
       });
       if (!response.ok) throw new Error('send failed');
@@ -246,5 +247,6 @@ byId('copy-discord').addEventListener('click', async () => {
     write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
   } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
 });
+
 
 
