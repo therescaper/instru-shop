@@ -195,7 +195,7 @@ function orderMessage() {
     fieldText('Coffre de paiement', 'payment-chest', 'à préciser'),
     '',
     'Merci !'
-  ].join('\\n');
+  ].join('\n');
 }
 const sendOrderButton = byId('send-order');
 if (sendOrderButton) {
@@ -233,6 +233,7 @@ byId('copy-discord').addEventListener('click', async () => {
     write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
   } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
 });
+
 
 
 
