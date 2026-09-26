@@ -171,7 +171,6 @@ function updateOrder() {
     row.append(remove); byId('order-items').append(row);
   }
   byId('order-empty').hidden = selection.size > 0;
-  byId('copy-order').disabled = selection.size === 0;
   if (byId('send-order')) byId('send-order').disabled = selection.size === 0;
   write('order-total', selection.size ? totalText() : '');
   write('order-help', webhookEndpoint ? 'Renseigne les coordonnées, puis envoie la commande sur Discord.' : (shop.orderMode === 'discord' ? `Envoie ensuite ce message à ${shop.discord} sur Discord pour convenir de l’échange.` : `Envoie ensuite ce message à ${shop.owner} en jeu pour convenir de l’échange.`));
@@ -198,19 +197,6 @@ function orderMessage() {
     'Merci !'
   ].join('\\n');
 }
-byId('copy-order').addEventListener('click', async () => {
-  if (!selection.size) return;
-  const message = orderMessage();
-  try {
-    await navigator.clipboard.writeText(message);
-    write('copy-status', 'Message copié ! Il te reste à l’envoyer au vendeur.');
-  } catch {
-    byId('order-fallback').value = message;
-    byId('order-fallback').hidden = false;
-    byId('order-fallback').focus(); byId('order-fallback').select();
-    write('copy-status', 'Copie le message ci-dessous, puis envoie-le au vendeur.');
-  }
-});
 const sendOrderButton = byId('send-order');
 if (sendOrderButton) {
   sendOrderButton.hidden = !webhookEndpoint;
@@ -234,7 +220,7 @@ if (sendOrderButton) {
       if (!response.ok) throw new Error('send failed');
       write('copy-status', 'Commande envoyée sur Discord !');
     } catch {
-      write('copy-status', 'Envoi impossible pour le moment. Utilise le bouton Copier ma commande.');
+      write('copy-status', 'Envoi impossible pour le moment. Réessaie dans quelques instants ou contacte le vendeur sur Discord.');
     } finally {
       sendOrderButton.disabled = false;
     }
@@ -247,6 +233,7 @@ byId('copy-discord').addEventListener('click', async () => {
     write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
   } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
 });
+
 
 
 

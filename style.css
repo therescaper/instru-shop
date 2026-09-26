@@ -17,6 +17,7 @@
 
 .netherite-copy .netherite-note{margin:.55rem 0 0;color:#dec09c;font-size:.82rem;font-weight:600}
 
-.order-coordinates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0}.order-coordinates label{display:grid;gap:.35rem;color:var(--muted);font-size:.85rem}.order-coordinates input{width:100%;font:inherit;color:var(--text);background:#101f19;border:1px solid #537343;border-radius:5px;padding:.55rem .65rem}.secondary-order-button{margin-left:.6rem;background:transparent;color:var(--accent);border:1px solid #537343}@media(max-width:850px){.order-coordinates{grid-template-columns:1fr}}@media(max-width:520px){.order-coordinates{grid-template-columns:1fr}.secondary-order-button{margin:.7rem 0 0;width:100%}#send-order{width:100%}}
+.order-coordinates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0}.order-coordinates label{display:grid;gap:.35rem;color:var(--muted);font-size:.85rem}.order-coordinates input{width:100%;font:inherit;color:var(--text);background:#101f19;border:1px solid #537343;border-radius:5px;padding:.55rem .65rem}@media(max-width:850px){.order-coordinates{grid-template-columns:1fr}}@media(max-width:520px){.order-coordinates{grid-template-columns:1fr}#send-order{width:100%}}
+
 
 
