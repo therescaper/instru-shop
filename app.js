@@ -28,6 +28,20 @@ if (shop.server) write('server-name', shop.server);
 const canOrder = shop.orderMode === 'ingame' ? Boolean(shop.owner) : shop.orderMode === 'discord' && Boolean(shop.discord);
 byId('order-panel').hidden = !canOrder;
 write('article-count', `${shop.products.length} article${shop.products.length > 1 ? 's' : ''}`);
+function setupQuantityInput(input) {
+  input.type = 'text';
+  input.inputMode = 'numeric';
+  input.pattern = '[0-9]*';
+  input.autocomplete = 'off';
+  input.addEventListener('focus', () => input.select());
+  input.addEventListener('click', () => input.select());
+  input.addEventListener('input', () => {
+    input.value = input.value.replace(/\D/g, '').slice(0, 2);
+  });
+}
+function cleanQuantity(value) {
+  return Math.max(1, Math.min(64, Math.floor(Number(value) || 1)));
+}
 function element(tag, className, content) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -82,19 +96,15 @@ for (const product of shop.products) {
   if (canOrder) {
     const quantityLabel = element('label', 'quantity-control', 'Quantité');
     const quantityInput = document.createElement('input');
-    quantityInput.type = 'number';
-    quantityInput.min = '1';
-    quantityInput.max = '64';
-    quantityInput.step = '1';
+    setupQuantityInput(quantityInput);
     quantityInput.value = '1';
-    quantityInput.inputMode = 'numeric';
     quantityInput.setAttribute('aria-label', `Quantité de ${product.name} à ajouter`);
     quantityLabel.append(quantityInput);
     const button = element('button', 'add-button', 'Ajouter à ma commande');
     button.type = 'button';
     button.setAttribute('aria-label', `Ajouter ${product.name} à ma commande`);
     button.addEventListener('click', () => {
-      const quantity = Math.max(1, Math.min(64, Math.floor(Number(quantityInput.value) || 1)));
+      const quantity = cleanQuantity(quantityInput.value);
       quantityInput.value = String(quantity);
       selection.set(product.id, Math.min(64, (selection.get(product.id) || 0) + quantity));
       if (!payments.has(product.id) && options.length) payments.set(product.id, options[0][0]);
@@ -141,15 +151,11 @@ function updateOrder() {
     summary.append(element('span', '', `${selection.get(product.id)} × ${product.name} (${product.unit})`));
     const quantityLabel = element('label', 'order-quantity', 'Quantité');
     const quantityInput = document.createElement('input');
-    quantityInput.type = 'number';
-    quantityInput.min = '1';
-    quantityInput.max = '64';
-    quantityInput.step = '1';
+    setupQuantityInput(quantityInput);
     quantityInput.value = String(selection.get(product.id));
-    quantityInput.inputMode = 'numeric';
     quantityInput.setAttribute('aria-label', `Modifier la quantité de ${product.name}`);
     quantityInput.addEventListener('change', () => {
-      const quantity = Math.max(1, Math.min(64, Math.floor(Number(quantityInput.value) || 1)));
+      const quantity = cleanQuantity(quantityInput.value);
       selection.set(product.id, quantity);
       write('copy-status', '');
       updateOrder();
@@ -246,6 +252,8 @@ if (sendOrderButton) {
   });
 }
 updateOrder();
+
+
 
 
 
