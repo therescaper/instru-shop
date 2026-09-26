@@ -17,7 +17,7 @@ window.SHOP = {
     { id: 'elytra-mending-unbreaking-3', name: 'Elytra Raccommodage + Solidité 3', category: 'Équipement', image: 'elytra', description: 'Elytra enchantée avec 64 fusées niveau 1 offertes.', unit: 'pièce', details: 'Raccommodage + Solidité 3 · 64 fusées niveau 1 offertes', prices: { diamants: 60 } },
     { id: 'arc-power-2', name: 'Arc Puissance 2', category: 'Armes', image: 'bow', description: 'Arc enchanté Puissance 2 pour mieux défendre ta base.', unit: 'pièce', details: 'Puissance 2', prices: { fer: 4, or: 4 } },
     { id: 'fleches', name: 'Flèches', category: 'Armes', image: 'arrow', description: 'De quoi remplir ton carquois avant une expédition.', unit: 'lot de 64', prices: { fer: 1, or: 1 } },
-    { id: 'fusees-niveau-3', name: 'Fusées niveau 3', category: 'Consommables', image: 'firework_rocket', description: 'Des fusées durée 3 pour voler plus longtemps en elytra.', unit: 'lot de 64', details: 'Durée de vol 3', prices: { fer: 16, or: 16 } },
+    { id: 'fusees-niveau-3', name: 'Fusées niveau 3', category: 'Consommables', image: 'firework_rocket', description: 'Des fusées durée 3 pour voler plus longtemps en elytra.', unit: 'lot de 64', details: 'Durée de vol 3', prices: { diamants: 4 } },
     { id: 'arbalete-multishot', name: 'Arbalète Multishot', category: 'Armes', image: 'crossbow', description: 'Arbalète enchantée Multishot pour tirer plusieurs projectiles.', unit: 'pièce', details: 'Multishot', prices: { fer: 4, or: 4 } },
     { id: 'carotte', name: 'Carottes dorées', category: 'Nourriture', image: 'golden_carrot', description: 'De quoi garder tes réserves bien remplies.', unit: 'lot de 32', prices: { fer: 8, or: 8, diamants: 4 } },
     { id: 'pommes', name: 'Pommes', category: 'Nourriture', image: 'apple', description: 'Des pommes simples pour compléter tes réserves.', unit: 'lot de 64', prices: { fer: 8, or: 8 } },
@@ -72,6 +72,7 @@ window.SHOP = {
     { id: 'ench-loyalty-3', name: 'Loyauté 3 (Loyalty 3)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Ramène ton trident vers toi après le lancer.', unit: 'livre', prices: { fer: 20, or: 20, diamants: 2 } }
   ]
 };
+
 
 
 
