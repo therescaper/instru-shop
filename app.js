@@ -6,6 +6,20 @@ const pricing = window.Pricing;
 const webhookEndpoint = window.ORDER_WEBHOOK_ENDPOINT || '';
 const byId = id => document.getElementById(id);
 const write = (id, text) => { byId(id).textContent = text; };
+let toastTimer;
+function showToast(message) {
+  const toast = byId('cart-toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.hidden = false;
+  toast.classList.remove('is-visible');
+  requestAnimationFrame(() => toast.classList.add('is-visible'));
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('is-visible');
+    setTimeout(() => { toast.hidden = true; }, 220);
+  }, 2200);
+}
 document.title = `${shop.name} — Boutique Minecraft`;
 write('shop-name', shop.name);
 write('footer-brand', `${shop.name} · Commerce entre joueurs`);
@@ -87,6 +101,7 @@ for (const product of shop.products) {
       if (!payments.has(product.id) && options.length) payments.set(product.id, options[0][0]);
       updateOrder();
       write('copy-status', `${quantity} × ${product.name} ajouté${quantity > 1 ? 's' : ''}.`);
+      showToast(`${product.name} ajouté${quantity > 1 ? 's' : ''} au panier`);
     });
     content.append(quantityLabel, button);
   }
@@ -238,6 +253,8 @@ byId('copy-discord').addEventListener('click', async () => {
     write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
   } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
 });
+
+
 
 
 
