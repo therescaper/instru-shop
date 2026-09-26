@@ -14,7 +14,7 @@ if (shop.server) write('server-name', shop.server);
 const canOrder = shop.orderMode === 'ingame' ? Boolean(shop.owner) : shop.orderMode === 'discord' && Boolean(shop.discord);
 byId('order-panel').hidden = !canOrder;
 write('article-count', `${shop.products.length} article${shop.products.length > 1 ? 's' : ''}`);
-  write('contact-summary', shop.orderMode === 'discord' && shop.discord ? `Discord : ${shop.discord}` : shop.owner ? `En jeu : ${shop.owner}` : 'Catalogue des échanges');
+write('contact-summary', shop.orderMode === 'discord' && shop.discord ? `Discord : ${shop.discord}` : shop.owner ? `En jeu : ${shop.owner}` : 'Catalogue des échanges');
 function element(tag, className, content) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -196,8 +196,7 @@ function orderMessage() {
     coordText('Coffre de paiement', 'payment-x', 'payment-z'),
     '',
     'Merci !'
-  ].join('
-');
+  ].join('\\n');
 }
 byId('copy-order').addEventListener('click', async () => {
   if (!selection.size) return;
