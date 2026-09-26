@@ -7,12 +7,12 @@
   <meta name="description" content="Bienvenue à tous chez l’Instru Shop ! Le plus grand magasin de tout Peurle SMP.">
   <title>Instru Shop — Peurle SMP</title>
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAADb/+uv/c2C9q1B84QX3WIAqiwAlSkAexgAUwAALQC5+lfcAAAAAXRSTlMAQObYZgAAAENJREFUeNpjwApmzoTQnCKuE8CMiSpuUWABIRW31AUghmqQWhmUYdaGxgg2a4UyPEpBDIZpFe1WEAPTgTJgsGoVVpsBDRwS6h42ddsAAAAASUVORK5CYII=" type="image/png">
-  <link rel="stylesheet" href="./style.css?v=17">
+  <link rel="stylesheet" href="./style.css?v=18">
   <script src="./config.js?v=2" defer></script>
   <script src="./images.js?v=20" defer></script><script src="./catalogue.js?v=40" defer></script>
   <script src="./pricing.js?v=3" defer></script>
-  <script src="./app.js?v=25" defer></script>
-  <!-- pages-refresh: 2026-09-26 10:44:44 -->
+  <script src="./app.js?v=26" defer></script>
+  <!-- pages-refresh: 2026-09-26 10:47:03 -->
 </head>
 <body>
   <a class="skip-link" href="#catalogue">Aller au catalogue</a>
@@ -65,6 +65,7 @@ Ici, vous découvrirez ce qu’est vraiment la variété.</p>
         <label>Coffre de paiement<input id="payment-chest" autocomplete="off" placeholder="Ex. coffre à l’entrée, X / Z..."></label>
       </div>
       <button type="button" class="primary-button" id="send-order" hidden disabled>Envoyer la commande sur Discord</button>
+      <button type="button" class="danger-button" id="clear-cart" disabled>Vider le panier</button>
       <p class="order-help" id="order-help"></p>
       <p role="status" aria-live="polite" id="copy-status"></p>
       <textarea id="order-fallback" aria-label="Message de commande à copier manuellement" readonly hidden></textarea>
@@ -84,6 +85,8 @@ Ici, vous découvrirez ce qu’est vraiment la variété.</p>
   <footer><span id="footer-brand">Instru Shop · Commerce entre joueurs</span><span>Site de joueur indépendant, non affilié à Mojang ou Microsoft.</span></footer>
 </body>
 </html>
+
+
 
 
 

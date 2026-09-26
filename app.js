@@ -193,6 +193,7 @@ function updateOrder() {
   }
   byId('order-empty').hidden = selection.size > 0;
   if (byId('send-order')) byId('send-order').disabled = selection.size === 0;
+  if (clearCartButton) clearCartButton.disabled = selection.size === 0;
   write('order-total', selection.size ? totalText() : '');
   write('order-help', webhookEndpoint ? 'Renseigne les coordonnées, puis envoie la commande sur Discord.' : (shop.orderMode === 'discord' ? `Envoie ensuite ce message à ${shop.discord} sur Discord pour convenir de l’échange.` : `Envoie ensuite ce message à ${shop.owner} en jeu pour convenir de l’échange.`));
 }
@@ -217,6 +218,16 @@ function orderMessage() {
     '',
     'Merci !'
   ].join('\n');
+}
+const clearCartButton = byId('clear-cart');
+if (clearCartButton) {
+  clearCartButton.addEventListener('click', () => {
+    selection.clear();
+    payments.clear();
+    updateOrder();
+    byId('order-panel').hidden = true;
+    write('copy-status', 'Panier vidé.');
+  });
 }
 const sendOrderButton = byId('send-order');
 if (sendOrderButton) {
@@ -252,6 +263,7 @@ if (sendOrderButton) {
   });
 }
 updateOrder();
+
 
 
 
