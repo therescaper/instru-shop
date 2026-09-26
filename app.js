@@ -118,6 +118,7 @@ if (!shop.products.length) byId('products').append(element('p', '', 'Le catalogu
 function selected() { return shop.products.filter(p => selection.has(p.id)); }
 function totalText() { return pricing.total(shop.products, selection, payments); }
 function updateOrder() {
+  if (canOrder && selection.size > 0) byId('order-panel').hidden = false;
   byId('order-items').replaceChildren();
   byId('order-fallback').hidden = true;
   for (const product of selected()) {
@@ -218,6 +219,10 @@ if (sendOrderButton) {
         }),
       });
       if (!response.ok) throw new Error('send failed');
+      selection.clear();
+      payments.clear();
+      updateOrder();
+      byId('order-panel').hidden = true;
       write('copy-status', 'Commande envoyée sur Discord !');
     } catch {
       write('copy-status', 'Envoi impossible pour le moment. Réessaie dans quelques instants ou contacte le vendeur sur Discord.');
@@ -233,6 +238,8 @@ byId('copy-discord').addEventListener('click', async () => {
     write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
   } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
 });
+
+
 
 
 
