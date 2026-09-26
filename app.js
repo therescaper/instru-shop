@@ -28,7 +28,6 @@ if (shop.server) write('server-name', shop.server);
 const canOrder = shop.orderMode === 'ingame' ? Boolean(shop.owner) : shop.orderMode === 'discord' && Boolean(shop.discord);
 byId('order-panel').hidden = !canOrder;
 write('article-count', `${shop.products.length} article${shop.products.length > 1 ? 's' : ''}`);
-write('contact-summary', shop.orderMode === 'discord' && shop.discord ? `Discord : ${shop.discord}` : shop.owner ? `En jeu : ${shop.owner}` : 'Catalogue des échanges');
 function element(tag, className, content) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -247,12 +246,7 @@ if (sendOrderButton) {
   });
 }
 updateOrder();
-byId('copy-discord').addEventListener('click', async () => {
-  try {
-    await navigator.clipboard.writeText(shop.discord);
-    write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
-  } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
-});
+
 
 
 
