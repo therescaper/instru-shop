@@ -4,7 +4,6 @@ window.SHOP = {
   server: 'Peurle SMP',
   owner: 'InstructeurMc',
   description: 'Bienvenue à tous chez l’Instru Shop ! Le plus grand magasin de tout Peurle SMP.\nIci, vous découvrirez ce qu’est vraiment la variété.',
-  draft: false,
   orderMode: 'discord', // catalogue, ingame ou discord
   discord: 'therescaper',
   products: [
@@ -73,6 +72,7 @@ window.SHOP = {
     { id: 'ench-loyalty-3', name: 'Loyauté 3 (Loyalty 3)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Ramène ton trident vers toi après le lancer.', unit: 'livre', prices: { fer: 20, or: 20, diamants: 2 } }
   ]
 };
+
 
 
 

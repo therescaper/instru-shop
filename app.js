@@ -11,13 +11,10 @@ write('shop-name', shop.name);
 write('footer-brand', `${shop.name} · Commerce entre joueurs`);
 write('shop-description', shop.description);
 if (shop.server) write('server-name', shop.server);
-byId('draft-note').hidden = !shop.draft;
-const canOrder = !shop.draft && (shop.orderMode === 'ingame' ? Boolean(shop.owner) : shop.orderMode === 'discord' && Boolean(shop.discord));
+const canOrder = shop.orderMode === 'ingame' ? Boolean(shop.owner) : shop.orderMode === 'discord' && Boolean(shop.discord);
 byId('order-panel').hidden = !canOrder;
 write('article-count', `${shop.products.length} article${shop.products.length > 1 ? 's' : ''}`);
-if (!shop.draft) {
   write('contact-summary', shop.orderMode === 'discord' && shop.discord ? `Discord : ${shop.discord}` : shop.owner ? `En jeu : ${shop.owner}` : 'Catalogue des échanges');
-}
 function element(tag, className, content) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -250,3 +247,5 @@ byId('copy-discord').addEventListener('click', async () => {
     write('discord-status', 'Pseudo copié ! Ajoute therescaper sur Discord.');
   } catch { write('discord-status', `Pseudo Discord : ${shop.discord}`); }
 });
+
+
