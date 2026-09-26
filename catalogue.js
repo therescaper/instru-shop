@@ -48,9 +48,9 @@ window.SHOP = {
     { id: 'bannieres-bleues', name: 'Bannières bleues', category: 'Construction', image: 'blue_banner', description: 'Des bannières bleues pour décorations et marqueurs.', unit: 'lot de 10', prices: { fer: 2, or: 2 } },
     { id: 'lanternes', name: 'Lanternes', category: 'Construction', image: 'lantern', description: 'Pour éclairer tes bases avec style.', unit: 'lot de 24', prices: { fer: 8, or: 8 } },
     { id: 'cloches', name: 'Cloches', category: 'Construction', image: 'bell', description: 'Pour décorer tes villages et tes shops.', unit: 'lot de 8', prices: { fer: 2, or: 2 } },
-    { id: 'froglight-ocre', name: 'Froglights ocres', category: 'Construction', image: 'ochre_froglight', description: 'Blocs lumineux ocres pour décorer et éclairer tes builds.', unit: 'lot de 32', prices: { diamants: 5 } },
-    { id: 'froglight-verdoyante', name: 'Froglights verdoyantes', category: 'Construction', image: 'verdant_froglight', description: 'Blocs lumineux verdoyants pour décorer et éclairer tes builds.', unit: 'lot de 32', prices: { diamants: 5 } },
-    { id: 'froglight-nacree', name: 'Froglights nacrées', category: 'Construction', image: 'pearlescent_froglight', description: 'Blocs lumineux nacrés pour décorer et éclairer tes builds.', unit: 'lot de 32', prices: { diamants: 5 } },
+    { id: 'froglight-ocre', name: 'Froglights ocres', category: 'Construction', image: 'ochre_froglight', description: 'Blocs lumineux ocres pour décorer et éclairer tes builds.', unit: 'lot de 64', prices: { diamants: 4 } },
+    { id: 'froglight-verdoyante', name: 'Froglights verdoyantes', category: 'Construction', image: 'verdant_froglight', description: 'Blocs lumineux verdoyants pour décorer et éclairer tes builds.', unit: 'lot de 64', prices: { diamants: 4 } },
+    { id: 'froglight-nacree', name: 'Froglights nacrées', category: 'Construction', image: 'pearlescent_froglight', description: 'Blocs lumineux nacrés pour décorer et éclairer tes builds.', unit: 'lot de 64', prices: { diamants: 4 } },
     { id: 'potions', name: 'Potions au choix', category: 'Potions', image: 'potion', description: 'Choisis tes 3 potions et précise ton choix sur Discord.', unit: 'lot de 3', details: 'Potions à préciser sur Discord', prices: { diamants: 2 } },
     { id: 'miel', name: 'Rayons de miel', category: 'Ressources', image: 'honeycomb', description: 'Pour tes bougies et tes constructions en cuivre ciré.', unit: 'lot de 64', prices: { fer: 8, or: 8, diamants: 2 } },
     { id: 'livres', name: 'Livres', category: 'Enchantement', image: 'book', description: 'Pour tes enchantements et tes bibliothèques.', unit: 'lot de 32', prices: { fer: 12, or: 12 } },
@@ -72,6 +72,8 @@ window.SHOP = {
     { id: 'ench-loyalty-3', name: 'Loyauté 3 (Loyalty 3)', category: 'Livre enchanté', shelf: 'Enchantements', image: 'enchanted_book', description: 'Ramène ton trident vers toi après le lancer.', unit: 'livre', prices: { fer: 20, or: 20, diamants: 2 } }
   ]
 };
+
+
 
 
 
